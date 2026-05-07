@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prostate Cancer Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+        .result p {
+            font-size: 18px;
+        }
+        .prediction {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d2d2d;
+        }
+        .confidence {
+            font-size: 18px;
+            color: #333;
+            margin-top: 15px;
+        }
+        .image-container {
+            margin-top: 30px;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Prostate Cancer Detection</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required><br><br>
+            <button type="submit">Upload Image</button>
+        </form>
+
+        {% if result %}
+        <div class="image-container">
+            <h3>Uploaded Image:</h3>
+            <img src="{{ image_path }}" alt="Uploaded Image">
+        </div>
+
+        <div class="result">
+            <p class="prediction">Prediction: {{ result }}</p>
+            <p class="confidence">Confidence: {{ confidence }}%</p>
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
